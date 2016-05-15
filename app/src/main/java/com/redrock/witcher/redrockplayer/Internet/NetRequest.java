@@ -44,7 +44,6 @@ public class NetRequest {
                     String line;
                     while ((line = bufferedReader.readLine()) != null) {
                         response.append(line).append("\n");
-                        Log.d("HotMusicActivity",line);
                     }
                     parseJSONWithJSONObject(response.toString());
                 } catch (Exception e) {
@@ -71,6 +70,7 @@ public class NetRequest {
         try {
             JSONObject jsonObject = new JSONObject(jsonData);
             JSONArray jsonArray = jsonObject.getJSONArray("songlist");
+            Log.d(TAG, "parseJSONWithJSONObject: ");
             for (int i = 0; i < jsonArray.length(); i++) {
                 jsonObject = jsonArray.getJSONObject(i);
                 Message message = new Message();
@@ -83,6 +83,4 @@ public class NetRequest {
             e.printStackTrace();
         }
     }
-    public static String getUrl() {
-        return url;}
 }
