@@ -28,7 +28,9 @@ public class HotSongAdapter extends RecyclerView.Adapter<HotSongAdapter.MyViewHo
 
     @Override
     public void onBindViewHolder(MyViewHolder holder, int position) {
-
+        holder.albumpicsmall.setImageBitmap(list.get(position).getAlbumPicSmall());
+        holder.songname.setText(list.get(position).getSongName());
+        holder.singername.setText(list.get(position).getSingerName());
     }
 
     @Override

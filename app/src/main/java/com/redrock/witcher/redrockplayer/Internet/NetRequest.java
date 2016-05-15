@@ -3,27 +3,29 @@ package com.redrock.witcher.redrockplayer.Internet;
 import android.graphics.BitmapFactory;
 import android.os.Handler;
 import android.os.Message;
+import android.util.Log;
 
 import com.redrock.witcher.redrockplayer.Object.HotSong;
 import com.redrock.witcher.redrockplayer.adapter.HotSongAdapter;
+import com.redrock.witcher.redrockplayer.view.activity.HotMusicActivity;
 
 import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.net.URL;
 import java.util.ArrayList;
 
 /**
  * Created by Zou Sheng on 2016/5/15.
  */
 public class NetRequest {
-    private static ArrayList<HotSong> hotSongList;
+    public static ArrayList<HotSong> hotSongList;
     private static String url;
-    private static HotSongAdapter adapter;
+    public static HotSongAdapter adapter;
     public static final int SHOW_RESPONSE=1;
 
+    public static final String TAG="HotMusicActivity";
     public NetRequest(ArrayList<HotSong> hotSongList, String url,HotSongAdapter adapter) {
         this.hotSongList = hotSongList;
         this.url = url;
@@ -42,6 +44,7 @@ public class NetRequest {
                     String line;
                     while ((line = bufferedReader.readLine()) != null) {
                         response.append(line).append("\n");
+                        Log.d("HotMusicActivity",line);
                     }
                     parseJSONWithJSONObject(response.toString());
                 } catch (Exception e) {
@@ -80,4 +83,6 @@ public class NetRequest {
             e.printStackTrace();
         }
     }
+    public static String getUrl() {
+        return url;}
 }
