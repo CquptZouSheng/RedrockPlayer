@@ -1,7 +1,7 @@
 package com.redrock.witcher.redrockplayer.view.fragment;
 
-import android.app.Fragment;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -31,12 +31,11 @@ public class WesternFragment extends Fragment {
 
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
-        Log.d(TAG, "onViewCreated: ");
+        hotSongList=new ArrayList<HotSong>();
         adapter = new HotSongAdapter(hotSongList);
         NetRequest netRequest=new NetRequest(hotSongList,
                 "http://route.showapi.com/213-4?showapi_appid=19023&topid=5&" +
                         "showapi_sign=9c7441232d11469d94472d57bf30b582",adapter);
-        Log.d(TAG, "onViewCreated: ");
         netRequest.sendRequestWithHttpURLConnection();
         recyclerView = (RecyclerView) view.findViewById(R.id.list);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));

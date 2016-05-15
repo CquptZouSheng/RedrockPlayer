@@ -1,15 +1,23 @@
 package com.redrock.witcher.redrockplayer.view.activity;
+import android.app.Fragment;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.LayoutInflater;
-import android.view.View;
 import com.redrock.witcher.redrockplayer.R;
-import com.redrock.witcher.redrockplayer.adapter.MyViewPagerAdapter;
+import com.redrock.witcher.redrockplayer.adapter.MyFragmentPager;
+import com.redrock.witcher.redrockplayer.view.fragment.ChinaFragment;
+import com.redrock.witcher.redrockplayer.view.fragment.FolkFragment;
+import com.redrock.witcher.redrockplayer.view.fragment.GangTaiFragment;
+import com.redrock.witcher.redrockplayer.view.fragment.JapanFragment;
+import com.redrock.witcher.redrockplayer.view.fragment.KoreaFragment;
+import com.redrock.witcher.redrockplayer.view.fragment.PopularFragment;
+import com.redrock.witcher.redrockplayer.view.fragment.RockFragment;
+import com.redrock.witcher.redrockplayer.view.fragment.SaleFragment;
+import com.redrock.witcher.redrockplayer.view.fragment.WesternFragment;
+
 import java.util.ArrayList;
 public class HotMusicActivity extends AppCompatActivity {
-    private ArrayList<View> viewlist;
-    private ViewPager viewPager;
+    private ArrayList<android.support.v4.app.Fragment> fragmentArrayList;
     private ArrayList<String> titleList;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,30 +36,19 @@ public class HotMusicActivity extends AppCompatActivity {
         titleList.add("摇滚");
         titleList.add("销量");
         titleList.add("热歌");
-        LayoutInflater layoutInflater = getLayoutInflater().from(this);
-        View westernView = layoutInflater.inflate(R.layout.western_fragment, null);
-        View chinaView = layoutInflater.inflate(R.layout.china_fragment, null);
-        View gangtaiView = layoutInflater.inflate(R.layout.gangtai_fragment, null);
-        View koreaView = layoutInflater.inflate(R.layout.korea_fragment, null);
-        View japanView = layoutInflater.inflate(R.layout.japan_fragment, null);
-        View folkView = layoutInflater.inflate(R.layout.folk_fragment, null);
-        View rockView = layoutInflater.inflate(R.layout.rock_fragment, null);
-        View saleView = layoutInflater.inflate(R.layout.sale_fragment, null);
-        View popularView = layoutInflater.inflate(R.layout.popular_fragment, null);
-        viewlist = new ArrayList<>();
-        viewlist.add(westernView);
-        viewlist.add(chinaView);
-        viewlist.add(gangtaiView);
-        viewlist.add(koreaView);
-        viewlist.add(japanView);
-        viewlist.add(folkView);
-        viewlist.add(rockView);
-        viewlist.add(saleView);
-        viewlist.add(popularView);
-        viewPager = (ViewPager) findViewById(R.id.viewpager);
-        MyViewPagerAdapter myViewPagerAdapter = new MyViewPagerAdapter(viewlist, titleList);
-        viewPager.setAdapter(myViewPagerAdapter);
-
+        fragmentArrayList=new ArrayList<android.support.v4.app.Fragment>();
+        fragmentArrayList.add(new WesternFragment());
+        fragmentArrayList.add(new ChinaFragment());
+        fragmentArrayList.add(new GangTaiFragment());
+        fragmentArrayList.add(new KoreaFragment());
+        fragmentArrayList.add(new JapanFragment());
+        fragmentArrayList.add(new FolkFragment());
+        fragmentArrayList.add(new RockFragment());
+        fragmentArrayList.add(new SaleFragment());
+        fragmentArrayList.add(new PopularFragment());
+        MyFragmentPager adapter = new MyFragmentPager(getSupportFragmentManager(), fragmentArrayList,titleList);
+        ViewPager vp = (ViewPager)findViewById(R.id.viewpager);
+        vp.setAdapter(adapter);
     }
 }
 
