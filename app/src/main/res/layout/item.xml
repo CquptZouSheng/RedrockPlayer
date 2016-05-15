@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    <RelativeLayout
+        android:id="@+id/item"
+        android:layout_width="match_parent"
+        android:layout_height="90.1dp">
+    <TextView
+        android:id="@+id/singername"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="汪苏泷"
+        android:textSize="24sp"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"/>
+    <TextView
+        android:id="@+id/songname"
+        android:layout_width="280dp"
+        android:layout_height="wrap_content"
+        android:text="还给你一些孤单 ( 《我是杜拉拉》电视剧插曲)"
+        android:layout_below="@+id/singername"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:textSize="12sp"/>
+    <ImageView
+        android:id="@+id/albumpicsmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/test"
+        android:layout_alignParentRight="true"/>
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="0.1dp"
+            android:background="#aaaaaa"
+            android:layout_below="@+id/albumpicsmall"/>
+    </RelativeLayout>
+</LinearLayout>
